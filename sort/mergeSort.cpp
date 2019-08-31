@@ -37,16 +37,19 @@ void merge_sort(vector<int>& data, int start, int end) {
     }
 }
 
+// non-recurent method
 void merge_sortV2(vector<int>& data) {
-    for (int w = 2; w < data.size() / 2; w *=2) {
-        int i = 0;
-        int start = 0; int end = 0;
-        while (i < data.size()) {
-            start = i;
-            end = i + w;
+    for (int w = 1; w < data.size(); w *=2) {
+        int start = 0; int end = w;
+        while (start < data.size() - 1) {
             int mid = (start + end) / 2;
-            i = end + 1;
+            std::cout << start << ":" << mid << " + " << mid + 1 << ":" << end << std::endl;
             merge(data, start, mid, end);
+            start += w;
+            end += w;
+            if (end > data.size() - 1) {
+                end = data.size() - 1;
+            }
         }
     }
 }
