@@ -6,6 +6,7 @@ CFLAGS:=-std=c++14 -O2
 INCLUDES:= -I.
 LDFLAGS:=
 ALL_SRC:=$(shell ls sort/*.cpp)
+#ALL_SRC+=$(shell ls util/*.cpp)
 MS_SRC+=mergeSortMain.cpp $(ALL_SRC)
 MS_OBJS:=$(foreach f, $(MS_SRC), $(addprefix $(OBJS_DIR)/$(dir $(f)), $(basename $(notdir $(f))).o))
 
