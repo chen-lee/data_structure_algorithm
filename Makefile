@@ -10,11 +10,19 @@ ALL_SRC:=$(shell ls sort/*.cpp)
 MS_SRC+=mergeSortMain.cpp $(ALL_SRC)
 MS_OBJS:=$(foreach f, $(MS_SRC), $(addprefix $(OBJS_DIR)/$(dir $(f)), $(basename $(notdir $(f))).o))
 
+HS_SRC+=heapSortMain.cpp $(ALL_SRC)
+HS_OBJS:=$(foreach f, $(HS_SRC), $(addprefix $(OBJS_DIR)/$(dir $(f)), $(basename $(notdir $(f))).o))
+
+
 $(OBJS_DIR)/%.o: %.cpp
 	@if [ ! -d $(dir $@) ]; then echo dir $(dir $@) not exist, create it && mkdir -p $(dir $@); fi
 	$(CC) -c $(CFLAGS) $(INCLUDES) -o $@ $<
 
 MS_EXE=mergesort
+HS_EXE=heapsort
+$(HS_EXE): $(HS_OBJS)
+	$(CC) $(HS_OBJS) -o $@ $(LDFLAGS)
+
 $(MS_EXE): $(MS_OBJS)
 	$(CC) $(MS_OBJS) -o $@ $(LDFLAGS)
 
