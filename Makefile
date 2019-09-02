@@ -36,4 +36,4 @@ $(MS_EXE): $(MS_OBJS)
 
 clean:
 	@echo "clean objects"
-	rm -rf $(MS_OBJS) $(MS_EXE)
+	rm -rf $(MS_OBJS) $(MS_EXE) $(QS_EXE) $(QS_OBJS)
