@@ -1,6 +1,9 @@
 #include <iostream>
 #include "sort/heapSort.h"
 
+#define M1 method1
+
+
 void swap1(vector<int>& data, int i, int j) {
     int tmp = data[i];
     data[i] = data[j];
@@ -14,6 +17,8 @@ void swap1(vector<int>& data, int i, int j) {
 
 int partition(vector<int>& data, int low, int high) {
     int midVal = data[low];
+#ifdef M1
+    std::cout << "use method 1" << endl;
     vector<int> small;
     vector<int> big;
     for (int i = low; i <= high;  ++i) {
@@ -33,20 +38,22 @@ int partition(vector<int>& data, int low, int high) {
         data[high--] = midVal;
     }
     data[high] = midVal;
-    /*
+#endif
+#ifdef M2
+    std::cout << "use method 2" << std::endl;
     while (low < high) {
-        while (low < high && data[low] < midVal) {
-            ++low;
-        }
-        std::cout << "        swap: " << low << " " << high << std::endl;
-        swap1(data, low, high);
         while (low < high && data[high] >= midVal) {
             --high;
         }
         std::cout << "        swap: " << low << " " << high << std::endl;
         swap1(data, low, high);
+        while (low < high && data[low] <= midVal) {
+            ++low;
+        }
+        std::cout << "        swap: " << low << " " << high << std::endl;
+        swap1(data, low, high);
     }
-    */
+#endif
     return low;
 }
 
