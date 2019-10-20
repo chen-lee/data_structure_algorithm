@@ -2,7 +2,7 @@ CC:= g++
 BUILD_DIR:=./build
 OBJS_DIR:=$(BUILD_DIR)/objs
 
-CFLAGS:=-std=c++14 -O2 -g
+CFLAGS:=-std=c++14 -g
 INCLUDES:= -I.
 LDFLAGS:=
 ALL_SRC:=$(shell ls sort/*.cpp)
